@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use RedBeanPHP\R as RedBean;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller {
 
@@ -37,9 +38,7 @@ class IndexController extends Controller {
         
         $messages = array_reverse($messages);
         
-        echo json_encode($messages);
-    }    
-
-    
+        echo json_encode($messages);         
+    }   
     
 }
