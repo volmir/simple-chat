@@ -1,0 +1,95 @@
+<style>
+    #messages
+    {
+        width: 500px;
+        height: 200px;
+        overflow: auto;
+        border: 1px solid silver;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="page-header">
+    <h1>Чат</h1>
+        </div>
+    </div>
+
+
+    <table>
+        <tr>
+            <td>
+                <div id="messages">
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    
+
+<form>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="username" value="User<?= mt_rand(10, 99); ?>">
+
+  </div>
+  <div class="form-group">
+    <label for="mess_to_send">Message</label>
+    <textarea class="form-control"  id="mess_to_send" rows="3"></textarea>
+  </div>
+  <input type="button" class="btn btn-primary" id="send" value="Отправить">
+</form>    
+
+
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        loadMessages();
+        setInterval(loadMessages, 2000);
+                
+        $("#send").click(function() {
+            var username = $("#username").val();
+            var mess = $("#mess_to_send").val();
+            $.ajax({
+                type: "POST",
+                url: "/index/add",
+                data: {
+                    mess: mess,
+                    username: username,
+                },
+                success: function (html)
+                {
+                    loadMessages();
+                    $("#mess_to_send").val('');
+                }
+            });
+        });
+    });
+    
+        function loadMessages()
+        {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/index/get",
+                data: {},
+                success: function (data)
+                {
+                    $("#messages").empty();
+                    
+                    let html = '';
+                    $.each(data, function(index, element) {
+                        html += element.username + ': ' + element.message + '<br>';
+                    });
+                    
+                    
+                    $("#messages").append(html);
+                    $("#messages").scrollTop(90000);
+                }
+            });
+        }  
+        
+</script>  
