@@ -1,3 +1,8 @@
+
+CREATE DATABASE simple_chat;
+
+USE simple_chat;
+
 CREATE TABLE `messages` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(255) NOT NULL,
@@ -6,5 +11,4 @@ CREATE TABLE `messages` (
 	PRIMARY KEY (`id`)
 )
 COLLATE='utf8_general_ci'
-ENGINE=InnoDB
-;
+ENGINE=InnoDB;

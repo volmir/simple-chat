@@ -3,9 +3,12 @@
 ### Install
 
 ```sh
-$ cd /path/to/htdocs
+$ cd /var/www
 $ git clone https://github.com/volmir/simple-chat.git
 $ composer install
+$ cp /var/www/simple-chat/config/config.dist.php /var/www/simple-chat/config/config.php
+$ vi /var/www/simple-chat/config/config.php
+$ mysql -u root -p < /var/www/simple-chat/dump/db_dump.sql
 ```
 
 Virtual host example (Apache):
@@ -56,6 +59,7 @@ server {
 ### RedBeanPHP ORM
 
 https://www.redbeanphp.com/index.php
+
 https://prowebmastering.ru/redbeanphp-orm-dlya-php.html
 
 

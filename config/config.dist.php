@@ -7,7 +7,7 @@ return [
       
     ],    
     'db' => [
-        'dbname' => 'test',
+        'dbname' => 'simple_chat',
         'user' => 'root',
         'password' => '',
         'host' => '127.0.0.1',

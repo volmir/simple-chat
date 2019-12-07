@@ -37,8 +37,11 @@ class IndexController extends Controller {
         $messages = RedBean::getAll($sql);
         
         $messages = array_reverse($messages);
-        
-        echo json_encode($messages);         
+      
+        $response = new Response();
+        $response->setContent(json_encode($messages));
+        $response->headers->set('Content-Type', 'application/json');        
+        $response->send();
     }   
     
 }
