@@ -59,7 +59,6 @@ server {
 ### RedBeanPHP ORM
 
 https://www.redbeanphp.com/index.php
-
 https://prowebmastering.ru/redbeanphp-orm-dlya-php.html
 
 
