@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Core\Controller;
 use RedBeanPHP\R as RedBean;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller {
 
@@ -34,14 +33,12 @@ class IndexController extends Controller {
         $sql = "SELECT * FROM messages 
                 ORDER BY date_created DESC
                 LIMIT 10";
-        $messages = RedBean::getAll($sql);
-        
+        $messages = RedBean::getAll($sql);        
         $messages = array_reverse($messages);
-      
-        $response = new Response();
-        $response->setContent(json_encode($messages));
-        $response->headers->set('Content-Type', 'application/json');        
-        $response->send();
+
+        $this->response->headers->set('Content-Type', 'application/json');  
+        
+        echo json_encode($messages);
     }   
     
 }
